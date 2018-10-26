@@ -11,11 +11,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static co.com.ias.deved.workshop.step01.FilteringApples.filterApples;
-import static co.com.ias.deved.workshop.step01.FilteringApples.filterGreenApples;
-import static co.com.ias.deved.workshop.step01.FilteringApples.filterHeavyApples;
+import static co.com.ias.deved.workshop.step01.BehaviourExplanation.filterApples;
+import static co.com.ias.deved.workshop.step01.BehaviourExplanation.filterGreenApples;
+import static co.com.ias.deved.workshop.step01.BehaviourExplanation.filterHeavyApples;
 
-public class FilteringApplesTests {
+public class BehaviourExplanationTests {
 
     private static List<Apple> inventory;
 
@@ -65,7 +65,7 @@ public class FilteringApplesTests {
     @Test
     @DisplayName("Filter green apples using method reference")
     void filterUsingMethodReference() {
-        List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
+        List<Apple> greenApples = filterApples(inventory, BehaviourExplanation::isGreenApple);
         List<Apple> onlyGreenApples = Arrays.asList(
                 new Apple(80, "green"),
                 new Apple(155, "green")
@@ -86,7 +86,7 @@ public class FilteringApplesTests {
     @Test
     @DisplayName("Filter heavy apples using method reference")
     void filterHeavyUsingMethodReference() {
-        List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
+        List<Apple> heavyApples = filterApples(inventory, BehaviourExplanation::isHeavyApple);
         List<Apple> onlyHeavyApples = Collections.singletonList(new Apple(155, "green"));
         Assertions.assertIterableEquals(onlyHeavyApples, heavyApples);
     }
@@ -94,7 +94,7 @@ public class FilteringApplesTests {
     @Test
     @DisplayName("Filter using predicate")
     void filterUsingPredicate() {
-        List<Apple> current = filterApples(inventory, FilteringApples.onlyGreenApple);
+        List<Apple> current = filterApples(inventory, BehaviourExplanation.onlyGreenApple);
         List<Apple> expected = Arrays.asList(
                 new Apple(80, "green"),
                 new Apple(155, "green")
