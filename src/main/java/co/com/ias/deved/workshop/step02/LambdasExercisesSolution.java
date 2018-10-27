@@ -2,40 +2,40 @@ package co.com.ias.deved.workshop.step02;
 
 import java.util.Objects;
 
-public class LambdasExercises {
+public class LambdasExercisesSolution {
 
     /**
      * Implement a function that receives two values
-     * @param <T>
-     * @param <R>
-     * @param <U>
+     * @param <T> Input parameter #1
+     * @param <R> Input parameter #2
+     * @param <U> Output parameter
      */
     // remove next comment to implement
     // @FunctionalInterface
     interface BiFunction<T, R, U> {
-        // TODO
+        U apply(T t, R r);
     }
 
     /**
      * Implement a consumer that receives two values
-     * @param <T> ?
-     * @param <R> ?
+     * @param <T> Input parameter #1
+     * @param <R> Input parameter #2
      */
     // remove next comment to implement
     // @FunctionalInterface
     interface BiConsumer<T, R> {
-        // TODO
+        void accept(T t, R r);
     }
 
     /**
      * Implement a predicate that receives two values
-     * @param <T> ?
-     * @param <R> ?
+     * @param <T> Input parameter #1
+     * @param <R> Input parameter #2
      */
     // remove next comment to implement
     // @FunctionalInterface
     interface BiPredicate<T, R> {
-        // TODO
+        Boolean test(T t, R r);
     }
 
     /**
@@ -50,10 +50,9 @@ public class LambdasExercises {
             return (T t) -> after.apply(apply(t));
         }
 
-        default <V> Function<T, V> compose(Function<? super V, ? extends T> before) {
+        default <V> Function<V, R> compose(Function<? super V, ? extends T> before) {
             Objects.requireNonNull(before);
-            // TODO
-            return null;
+            return (V v) -> apply(before.apply(v));
         }
     }
 
